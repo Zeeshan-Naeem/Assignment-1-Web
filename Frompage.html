@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<HTML>
+	<head>
+		<title>Group ID 1</title>
+	</head>
+	<body>
+		<div>  
+	      <div>
+	        <div>   
+	          <h1>Sign Up for Free</h1>
+	          <form action="/" method="post">
+	          <div>
+	            <div>
+	              <label>
+	                First Name<span class="req">*</span>
+	              </label>
+	              <input type="text" required autocomplete="off" />
+	            </div>        
+	            <div>
+	              <label>
+	                Last Name<span class="req">*</span>
+	              </label>
+	              <input type="text"required autocomplete="off"/>
+	            </div>
+	          </div>
+	          <div>
+	            <label>
+	              Email Address<span class="req">*</span>
+	            </label>
+	            <input type="email"required autocomplete="off"/>
+	          </div>
+	          <div >
+	            <label>
+	              Set A Password<span class="req">*</span>
+	            </label>
+	            <input type="password"required autocomplete="off"/>
+	          </div>
+	          <button type="submit" class="button button-block"/>Get Started</button>
+	          </form>
+	        </div>
+	        <div>   
+	          <h1>Already have an account! Login</h1>
+	          <form action="/" method="post">
+		          <div >
+		            <label>
+		              Email Address<span class="req">*</span>
+		            </label>
+		            <input type="email"required autocomplete="off"/>
+		          </div>
+		          <div >
+		            <label>
+		              Password<span class="req">*</span>
+		            </label>
+		            <input type="password"required autocomplete="off"/>
+		          </div>
+		          <button class="button button-block"/>Log In</button>
+	          </form>
+	        </div>
+	      </div>
+		</div>
+	</body>
+	<script>
+		$('.form').find('input, textarea').on('keyup blur focus', function (e) {
+		  
+		  var $this = $(this),
+		      label = $this.prev('label');
+
+			  if (e.type === 'keyup') {
+					if ($this.val() === '') {
+		          label.removeClass('active highlight');
+		        } else {
+		          label.addClass('active highlight');
+		        }
+		    } else if (e.type === 'blur') {
+		    	if( $this.val() === '' ) {
+		    		label.removeClass('active highlight'); 
+					} else {
+				    label.removeClass('highlight');   
+					}   
+		    } else if (e.type === 'focus') {
+		      
+		      if( $this.val() === '' ) {
+		    		label.removeClass('highlight'); 
+					} 
+		      else if( $this.val() !== '' ) {
+				    label.addClass('highlight');
+					}
+		    }
+
+		});
+
+		$('.tab a').on('click', function (e) {
+		  
+		  e.preventDefault();
+		  
+		  $(this).parent().addClass('active');
+		  $(this).parent().siblings().removeClass('active');
+		  
+		  target = $(this).attr('href');
+
+		  $('.tab-content > div').not(target).hide();
+		  
+		  $(target).fadeIn(600);
+		  
+		});
+	</script>
+</HTML>
